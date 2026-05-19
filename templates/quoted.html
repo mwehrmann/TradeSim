@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ stock.symbol }}
+{% endblock %}
+
+{% block main %}
+
+     <h1>{{ stock.name }}</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Symbol</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ stock.symbol }}</td>
+                <td>$ {{ "%.2f"|format(stock.price) }}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

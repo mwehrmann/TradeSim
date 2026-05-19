@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell Shares
+{% endblock %}
+
+{% block main %}
+
+    <form action="/sell" method="post">
+        <div class="mb-3">
+            <select name="symbol" class="form-select mx-auto w-25" style="max-width: 300px;" aria-label="Select share symbol">
+                <option value="" selected>Symbol</option>
+                {% for holding in holdings %}
+                    <option value="{{ holding['symbol'] }}">{{ holding["symbol"] }}</option>
+                {% endfor %}
+</select>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control w-25 mx-auto" style="max-width: 300px;" name="shares" placeholder="Amount" type="text">
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary w-25" type="submit" style="max-width: 300px;">Sell</button>
+        </div>
+    </form>
+{% endblock %}

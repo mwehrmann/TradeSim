@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+
+     <div class="mb-4 text-start">
+        <h1 class="display-5 fw-bold">
+            Dashboard
+        </h1>
+
+        <p class="text-muted">
+            Track your portfolio and manage your investments.
+        </p>
+    </div>
+
+     <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="text-muted">Cash Balance</h6>
+                    <h3>$ {{ "%.2f"|format(cash) }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="text-muted">Portfolio Value</h6>
+                    <h3>$ {{ "%.2f"|format(total) }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <a href="/buy" class="btn btn-success w-100">
+                Buy Stock
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="/sell" class="btn btn-danger w-100">
+                Sell Stock
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="/deposit" class="btn btn-primary w-100">
+                Deposit Funds
+            </a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">Symbol</th>
+                        <th scope="col" class="text-end">Shares</th>
+                        <th scope="col" class="text-end">Current Price</th>
+                        <th scope="col" class="text-end">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for holding in portfolio %}
+                        <tr>
+                            <td>{{ holding.symbol }}</td>
+                            <td class="text-end">{{ holding.shares }}</td>
+                            <td class="text-end">$ {{ "%.2f"|format(holding.price) }}</td>
+                            <td class="text-end">$ {{ "%.2f"|format(holding.value) }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

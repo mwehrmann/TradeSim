@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+
+     <h1 class="mb-4">History</h1>
+    <table class="table table-striped align-middle">
+        <thead class="thead-dark">
+            <tr>
+                <th style="width: 15%;" scope="col">Symbol</th>
+                <th style="width: 15%;" scope="col">Action</th>
+                <th style="width: 15%;" scope="col" class="text-end">Shares</th>
+                <th style="width: 20%;" scope="col" class="text-end">Price</th>
+                <th style="width: 35%;" scope="col" class="text-end">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in history %}
+                <tr>
+                    <td>{{ row.symbol }}</td>
+                    <td>{{ row.action }}</td>
+                    <td class="text-end">{{ "%.0f"|format(row.amount) }}</td>
+                    <td class="text-end">$ {{ "%.2f"|format(row.price) }}</td>
+                    <td class="text-end text-nowrap">{{ row.time }} UTC</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

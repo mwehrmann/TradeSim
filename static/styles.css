@@ -1,0 +1,21 @@
+/* Navbar */
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+
+/* Dashboard Cards */
+
+.card {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Table */
+
+.table {
+    margin-bottom: 0;
+}
